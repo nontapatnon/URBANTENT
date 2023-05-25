@@ -10,8 +10,6 @@ df_4 = df[df['type'] == 'เคหะชุมชน']
 df_5 = df[df['type'] == 'ชุมชนเมือง']
 df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
 
-
-
 map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=12)
 
 for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
@@ -19,14 +17,13 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
         df_1['lng'].astype(float),
         df_1['name'] +", " + df_1['type']): 
        
-   
     folium.CircleMarker(
         [lat, lng],
         radius=5,
        
         color='#fa0202',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#fa0202',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
@@ -43,7 +40,7 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
        
         color='#fa7202',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#fa7202',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
@@ -52,7 +49,6 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
         df_3['lat'].astype(float), 
         df_3['lng'].astype(float),
         df_3['name'] +", " + df_3['type']): 
-       
    
     folium.CircleMarker(
         [lat, lng],
@@ -60,7 +56,7 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
        
         color='#fad902',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#fad902',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
@@ -76,7 +72,7 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
        
         color='#02fa49',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#02fa49',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
@@ -86,14 +82,14 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
         df_5['lng'].astype(float),
         df_5['name'] +", " + df_5['type']): 
        
-   
+
     folium.CircleMarker(
         [lat, lng],
         radius=5,
        
         color='#027afa',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#027afa',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
@@ -102,7 +98,6 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
         df_6['lat'].astype(float), 
         df_6['lng'].astype(float),
         df_6['name'] +", " + df_6['type']): 
-       
    
     folium.CircleMarker(
         [lat, lng],
@@ -110,7 +105,7 @@ for lat, lng, name in zip(#df_test['Latitude'],df_test['Longitude']):
        
         color='#9b02fa',
         fill=True,
-        popup= name,
+        popup= folium.Popup(name, max_width="100"),
         fill_color='#9b02fa',
         fill_opacity=0.7,
         parse_html=False).add_to(map_th)
