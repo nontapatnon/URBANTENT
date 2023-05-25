@@ -133,7 +133,7 @@ df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
 
 map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=12)
 
-for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + ", " + df_1['type']):
+for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + "\n(" + df_1['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
         radius=5,
