@@ -216,7 +216,7 @@ if option == 'ชุมชนเมือง':
             parse_html=False
         ).add_to(map_th)
     st_folium(map_th, width=725, returned_objects=[])
-    
+
 if option == 'ชุมชนอาคารสูง':
     df = df[df['type'] == 'ชุมชนอาคารสูง']
     map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
