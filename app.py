@@ -1,8 +1,6 @@
-import pandas as pd
 import folium
-from shapely.geometry import Point, Polygon
 from streamlit_folium import st_folium
-
+import pandas as pd
 
 df = pd.read_csv('community.csv')
 df_1 = df[df['type'] == 'ชุมชนแออัด']
