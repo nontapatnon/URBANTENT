@@ -145,7 +145,8 @@ for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-for lat, lng, name in zip(df_2['lat'].astype(float), df_2['lng'].astype(float), df_2['name'] + ", " + df_2['type']):
+for lat, lng, name in zip(df_2['lat'].astype(float), df_2['lng'].astype(float), df_2['name'] + "\n(" + df_2['type'] + ")"):
+    folium.CircleMarker(
     folium.CircleMarker(
         [lat, lng],
         radius=5,
@@ -157,7 +158,8 @@ for lat, lng, name in zip(df_2['lat'].astype(float), df_2['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-for lat, lng, name in zip(df_3['lat'].astype(float), df_3['lng'].astype(float), df_3['name'] + ", " + df_3['type']):
+for lat, lng, name in zip(df_3['lat'].astype(float), df_3['lng'].astype(float), df_3['name'] + "\n(" + df_3['type'] + ")"):
+    folium.CircleMarker(
     folium.CircleMarker(
         [lat, lng],
         radius=5,
@@ -169,7 +171,8 @@ for lat, lng, name in zip(df_3['lat'].astype(float), df_3['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-for lat, lng, name in zip(df_4['lat'].astype(float), df_4['lng'].astype(float), df_4['name'] + ", " + df_4['type']):
+for lat, lng, name in zip(df_4['lat'].astype(float), df_4['lng'].astype(float), df_4['name'] + "\n(" + df_4['type'] + ")"):
+    folium.CircleMarker(
     folium.CircleMarker(
         [lat, lng],
         radius=5,
@@ -181,7 +184,7 @@ for lat, lng, name in zip(df_4['lat'].astype(float), df_4['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), df_5['name'] + ", " + df_5['type']):
+for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), df_5['name'] + "\n(" + df_5['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
         radius=5,
@@ -193,7 +196,8 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-for lat, lng, name in zip(df_6['lat'].astype(float), df_6['lng'].astype(float), df_6['name'] + ", " + df_6['type']):
+for lat, lng, name in zip(df_6['lat'].astype(float), df_6['lng'].astype(float), df_6['name'] + "\n(" + df_6['type'] + ")"):
+    folium.CircleMarker(
     folium.CircleMarker(
         [lat, lng],
         radius=5,
