@@ -7,7 +7,8 @@ from folium.plugins import HeatMap, HeatMapWithTime
 df = pd.read_csv('community.csv')
 heatmap_df = pd.read_csv('districtBKK_den_loc.csv')
 # ['เขต', 'ชุมชน (ชุมชน)', 'ประชากร (คน)', 'ครอบครัว (ครอบครัว)''หลังคาเรือน (หลัง)', 'District', 'LAT', 'LONG']
-heatmap_df = heatmap_df[['LAT','LONG','ชุมชน (ชุมชน)']]
+heatmap_df = heatmap_df[['LAT','LONG','ประชากร (คน)']]
+
 # _1 = st.checkbox('ชุมชนแออัด')
 # _2 = st.checkbox('ชุมชนชานเมือง')
 # _3 = st.checkbox('ชุมชนหมู่บ้านจัดสรร')
