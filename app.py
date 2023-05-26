@@ -171,8 +171,8 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
     ).add_to(map_th5)
 # map5 = st_folium(map_th5, width=700, height= 500, returned_objects=[])
 
-st.sidebar.title("49 Urban Tent \nSelect Community Map")
-# st.sidebar.title("Select Community Map")
+# st.sidebar.title("49 Urban Tent \nSelect Community Map")
+st.sidebar.title("Select Community Map")
 
 
 option = st.sidebar.radio(
