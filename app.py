@@ -19,7 +19,7 @@ df_4 = df[df['type'] == 'เคหะชุมชน']
 df_5 = df[df['type'] == 'ชุมชนเมือง']
 # df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
 
-map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + "\n(" + df_1['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -76,7 +76,7 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th)
 
-map_th1 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th1 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + "\n(" + df_1['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -88,9 +88,9 @@ for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), 
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th1)
-# map1 = st_folium(map_th1, width=725, returned_objects=[])
+# map1 = st_folium(map_th1, width=700, height= 500, returned_objects=[])
 
-map_th2 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th2 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_2['lat'].astype(float), df_2['lng'].astype(float), df_2['name'] + "\n(" + df_2['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -102,9 +102,9 @@ for lat, lng, name in zip(df_2['lat'].astype(float), df_2['lng'].astype(float), 
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th2)
-# map2 = st_folium(map_th2, width=725, returned_objects=[])
+# map2 = st_folium(map_th2, width=700, height= 500, returned_objects=[])
 
-map_th3 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th3 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_3['lat'].astype(float), df_3['lng'].astype(float), df_3['name'] + "\n(" + df_3['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -116,9 +116,9 @@ for lat, lng, name in zip(df_3['lat'].astype(float), df_3['lng'].astype(float), 
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th3)
-# map3 = st_folium(map_th3, width=725, returned_objects=[])
+# map3 = st_folium(map_th3, width=700, height= 500, returned_objects=[])
 
-map_th4 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th4 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_4['lat'].astype(float), df_4['lng'].astype(float), df_4['name'] + "\n(" + df_4['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -130,9 +130,9 @@ for lat, lng, name in zip(df_4['lat'].astype(float), df_4['lng'].astype(float), 
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th4)
-# map4 = st_folium(map_th4, width=725, returned_objects=[])
+# map4 = st_folium(map_th4, width=700, height= 500, returned_objects=[])
 
-map_th5 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=10)
+map_th5 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), df_5['name'] + "\n(" + df_5['type'] + ")"):
     folium.CircleMarker(
         [lat, lng],
@@ -144,13 +144,13 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th5)
-# map5 = st_folium(map_th5, width=725, returned_objects=[])
+# map5 = st_folium(map_th5, width=700, height= 500, returned_objects=[])
 
 
-st.sidebar.title("Select Map Type")
+st.sidebar.title("Select Community Map")
 
 option = st.sidebar.radio(
-    "Which map would you like to show",
+    "Which community would you like to show",
     ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง'))
 
 # option = st.selectbox(
@@ -159,22 +159,22 @@ option = st.sidebar.radio(
 
 if option == 'ทั้งหมด':
     # df = df[df['type'] == 'ชุมชนแออัด']
-    st_folium(map_th, width=725, returned_objects=[])
+    st_folium(map_th, width=700, height= 500, returned_objects=[])
 if option == 'ชุมชนแออัด':
     # df = df[df['type'] == 'ชุมชนแออัด']
-    st_folium(map_th1, width=725, returned_objects=[])
+    st_folium(map_th1, width=700, height= 500, returned_objects=[])
 if option == 'ชุมชนชานเมือง':
     # df = df[df['type'] == 'ชุมชนชานเมือง']
-    st_folium(map_th2, width=725, returned_objects=[])
+    st_folium(map_th2, width=700, height= 500, returned_objects=[])
 if option == 'ชุมชนหมู่บ้านจัดสรร':
     # df = df[df['type'] == 'ชุมชนหมู่บ้านจัดสรร']
-    st_folium(map_th3, width=725, returned_objects=[])
+    st_folium(map_th3, width=700, height= 500, returned_objects=[])
 if option == 'เคหะชุมชน':
     # df = df[df['type'] == 'เคหะชุมชน']
-    st_folium(map_th4, width=725, returned_objects=[])
+    st_folium(map_th4, width=700, height= 500, returned_objects=[])
 if option == 'ชุมชนเมือง':
     # df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_th5, width=725, returned_objects=[])
+    st_folium(map_th5, width=700, height= 500, returned_objects=[])
 
 
 
@@ -187,7 +187,7 @@ if option == 'ชุมชนเมือง':
 # df_5 = df[df['type'] == 'ชุมชนเมือง']
 # df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
 
-# map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=12)
+# map_th = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=12)
 
 # for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + "\n(" + df_1['type'] + ")"):
 #     folium.CircleMarker(
@@ -263,4 +263,4 @@ if option == 'ชุมชนเมือง':
 
 # Save the map as a static image
 # map_th.save('static_map.html')
-# st_folium(map_th, width=725, returned_objects=[])
+# st_folium(map_th, width=700, height= 500, returned_objects=[])
