@@ -2,8 +2,12 @@ import folium
 from streamlit_folium import st_folium
 import pandas as pd
 import streamlit as st
+from folium.plugins import HeatMap, HeatMapWithTime
 
 df = pd.read_csv('community.csv')
+heatmap_df = pd.read_csv('districtBKK_den_loc.csv')
+# ['เขต', 'ชุมชน (ชุมชน)', 'ประชากร (คน)', 'ครอบครัว (ครอบครัว)''หลังคาเรือน (หลัง)', 'District', 'LAT', 'LONG']
+heatmap_df = heatmap_df[['LAT','LONG','ชุมชน (ชุมชน)']]
 # _1 = st.checkbox('ชุมชนแออัด')
 # _2 = st.checkbox('ชุมชนชานเมือง')
 # _3 = st.checkbox('ชุมชนหมู่บ้านจัดสรร')
@@ -18,6 +22,13 @@ df_3 = df[df['type'] == 'ชุมชนหมู่บ้านจัดสร�
 df_4 = df[df['type'] == 'เคหะชุมชน']
 df_5 = df[df['type'] == 'ชุมชนเมือง']
 # df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
+
+map_th0 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
+HeatMap(heatmap_df, 
+        min_opacity=0.4,
+        blur = 18
+               ).add_to(folium.FeatureGroup(name='Heat Map').add_to(map_th0))
+# folium.LayerControl().add_to(map_th0)
 
 map_th = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 for lat, lng, name in zip(df_1['lat'].astype(float), df_1['lng'].astype(float), df_1['name'] + "\n(" + df_1['type'] + ")"):
@@ -151,7 +162,7 @@ st.sidebar.title("Select Community Map")
 
 option = st.sidebar.radio(
     "Which community would you like to show",
-    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง'))
+    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Heatmap'))
 
 # option = st.selectbox(
 #     'Select community type',
@@ -175,6 +186,9 @@ if option == 'เคหะชุมชน':
 if option == 'ชุมชนเมือง':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_th5, width=700, height= 500, returned_objects=[])
+if option == 'Heatmap':
+    # df = df[df['type'] == 'ชุมชนเมือง']
+    st_folium(map_th0, width=700, height= 500, returned_objects=[])
 
 
 
