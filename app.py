@@ -211,7 +211,7 @@ option = st.selectbox(
 if option == 'ชุมชนแออัด':
     # df = df[df['type'] == 'ชุมชนแออัด']
     st_folium(map_th1, width=725, returned_objects=[])
-if option == 'ชุมชนเมือง':
+if option == 'ชุมชนขานเมือง':
     # df = df[df['type'] == 'ชุมชนชานเมือง']
     st_folium(map_th2, width=725, returned_objects=[])
 if option == 'ชุมชนหมู่บ้านจัดสรร':
