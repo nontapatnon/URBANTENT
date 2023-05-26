@@ -177,7 +177,7 @@ st.sidebar.title("49 Urban Tent \nSelect Community Map")
 
 option = st.sidebar.radio(
     "Which community would you like to show",
-    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Heatmap'))
+    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap'))
 
 # option = st.selectbox(
 #     'Select community type',
@@ -201,7 +201,7 @@ if option == 'เคหะชุมชน':
 if option == 'ชุมชนเมือง':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_th5, width=700, height= 500, returned_objects=[])
-if option == 'Heatmap':
+if option == 'Population Heatmap':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_th0, width=700, height= 500, returned_objects=[])
 
