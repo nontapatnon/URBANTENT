@@ -34,12 +34,12 @@ HeatMap(heatmap_df0,
 for lat, lng, name in zip(heatmap_df1['LAT'].astype(float), heatmap_df1['LONG'].astype(float), 'เขต' + heatmap_df1['District']):
     folium.CircleMarker(
         [lat, lng],
-        radius=3,
-        color='#000000',
+        radius=10,
+        color= None,
         fill=True,
         popup=folium.Popup(name, max_width="100"),
         fill_color='#000000',
-        fill_opacity=0.7,
+        fill_opacity= 0,
         parse_html=False
     ).add_to(map_th0)
 # folium.LayerControl().add_to(map_th0)
