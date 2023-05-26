@@ -142,7 +142,7 @@ for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th1)
-# map1 = st_folium(map_th1, width=725, returned_objects=[])
+map1 = st_folium(map_th1, width=725, returned_objects=[])
 
 map_th2 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
 for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
@@ -156,7 +156,7 @@ for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th2)
-# map2 = st_folium(map_th2, width=725, returned_objects=[])
+map2 = st_folium(map_th2, width=725, returned_objects=[])
 
 map_th3 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
 for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
@@ -170,7 +170,7 @@ for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th3)
-# map3 = st_folium(map_th3, width=725, returned_objects=[])
+map3 = st_folium(map_th3, width=725, returned_objects=[])
 
 map_th4 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
 for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
@@ -184,7 +184,7 @@ for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th4)
-# map4 = st_folium(map_th4, width=725, returned_objects=[])
+map4 = st_folium(map_th4, width=725, returned_objects=[])
 
 map_th5 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
 for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
@@ -198,7 +198,7 @@ for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['
         fill_opacity=0.7,
         parse_html=False
     ).add_to(map_th5)
-# map5 = st_folium(map_th5, width=725, returned_objects=[])
+map5 = st_folium(map_th5, width=725, returned_objects=[])
 
 
 
@@ -209,21 +209,20 @@ option = st.selectbox(
 
 
 if option == 'ชุมชนแออัด':
-    df = df[df['type'] == 'ชุมชนแออัด']
-    st_folium(map_th1, width=725, returned_objects=[])
+    # df = df[df['type'] == 'ชุมชนแออัด']
+    map1
 if option == 'ชุมชนเมือง':
-    df = df[df['type'] == 'ชุมชนชานเมือง']
-    st_folium(map_th2, width=725, returned_objects=[])
+    # df = df[df['type'] == 'ชุมชนชานเมือง']
+    map2
 if option == 'ชุมชนหมู่บ้านจัดสรร':
-    df = df[df['type'] == 'ชุมชนหมู่บ้านจัดสรร']
-    st_folium(map_th3, width=725, returned_objects=[])
+    # df = df[df['type'] == 'ชุมชนหมู่บ้านจัดสรร']
+    map3
 if option == 'เคหะชุมชน':
-    df = df[df['type'] == 'เคหะชุมชน']
-    st_folium(map_th4, width=725, returned_objects=[])
+    # df = df[df['type'] == 'เคหะชุมชน']
+    map4
 if option == 'ชุมชนเมือง':
-    df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_th5, width=725, returned_objects=[])
-
+    # df = df[df['type'] == 'ชุมชนเมือง']
+    map5
 
 
 
