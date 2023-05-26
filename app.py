@@ -123,7 +123,6 @@ import pandas as pd
 import streamlit as st
 
 df = pd.read_csv('community.csv')
-
 # _1 = st.checkbox('ชุมชนแออัด')
 # _2 = st.checkbox('ชุมชนชานเมือง')
 # _3 = st.checkbox('ชุมชนหมู่บ้านจัดสรร')
@@ -131,108 +130,101 @@ df = pd.read_csv('community.csv')
 # _5 = st.checkbox('ชุมชนเมือง')
 # _6 = st.checkbox('ชุมชนอาคารสูง')
 
+map_th1 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=5,
+        color='#fa0202',
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#fa0202',
+        fill_opacity=0.7,
+        parse_html=False
+    ).add_to(map_th1)
+# map1 = st_folium(map_th1, width=725, returned_objects=[])
+
+map_th2 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=5,
+        color='#fa7202',
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#fa7202',
+        fill_opacity=0.7,
+        parse_html=False
+    ).add_to(map_th2)
+# map2 = st_folium(map_th2, width=725, returned_objects=[])
+
+map_th3 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=5,
+        color='#fad902',
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#fad902',
+        fill_opacity=0.7,
+        parse_html=False
+    ).add_to(map_th3)
+# map3 = st_folium(map_th3, width=725, returned_objects=[])
+
+map_th4 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=5,
+        color='#02fa49',
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#02fa49',
+        fill_opacity=0.7,
+        parse_html=False
+    ).add_to(map_th4)
+# map4 = st_folium(map_th4, width=725, returned_objects=[])
+
+map_th5 = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=5,
+        color='#027afa',
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#027afa',
+        fill_opacity=0.7,
+        parse_html=False
+    ).add_to(map_th5)
+# map5 = st_folium(map_th5, width=725, returned_objects=[])
+
+
+
+
 option = st.selectbox(
     'Select community type',
-    ('ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','ชุมชนอาคารสูง'))
+    ('ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง'))
 
 
 if option == 'ชุมชนแออัด':
     df = df[df['type'] == 'ชุมชนแออัด']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
-
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#fa0202',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#fa0202',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
+    st_folium(map_th1, width=725, returned_objects=[])
 if option == 'ชุมชนเมือง':
     df = df[df['type'] == 'ชุมชนชานเมือง']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
-
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#fa7202',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#fa7202',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
+    st_folium(map_th2, width=725, returned_objects=[])
 if option == 'ชุมชนหมู่บ้านจัดสรร':
     df = df[df['type'] == 'ชุมชนหมู่บ้านจัดสรร']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
-
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#fad902',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#fad902',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
+    st_folium(map_th3, width=725, returned_objects=[])
 if option == 'เคหะชุมชน':
     df = df[df['type'] == 'เคหะชุมชน']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
-
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#02fa49',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#02fa49',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
+    st_folium(map_th4, width=725, returned_objects=[])
 if option == 'ชุมชนเมือง':
     df = df[df['type'] == 'ชุมชนเมือง']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
+    st_folium(map_th5, width=725, returned_objects=[])
 
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#027afa',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#027afa',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
 
-if option == 'ชุมชนอาคารสูง':
-    df = df[df['type'] == 'ชุมชนอาคารสูง']
-    map_th = folium.Map(location=[13.756331, 100.501762], tiles="Stamen Toner", zoom_start=11)
-
-    for lat, lng, name in zip(df['lat'].astype(float), df['lng'].astype(float), df['name'] + "\n(" + df['type'] + ")"):
-        folium.CircleMarker(
-            [lat, lng],
-            radius=5,
-            color='#9b02fa',
-            fill=True,
-            popup=folium.Popup(name, max_width="100"),
-            fill_color='#9b02fa',
-            fill_opacity=0.7,
-            parse_html=False
-        ).add_to(map_th)
-    st_folium(map_th, width=725, returned_objects=[])
 
 
 
