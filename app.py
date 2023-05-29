@@ -10,6 +10,9 @@ heatmap_df = pd.read_csv('districtBKK_den_loc.csv')
 heatmap_df0 = heatmap_df[['LAT','LONG','ประชากร (คน)']]
 heatmap_df1 = heatmap_df[['LAT','LONG','District']]
 
+heatmap_df_risk = pd.read_csv('districtBKK_risk.csv')
+heatmap_df_risk0 = heatmap_df_risk[['LAT','LONG','Risk']]
+heatmap_df_risk1 = heatmap_df_risk[['LAT','LONG','District']]
 # _1 = st.checkbox('ชุมชนแออัด')
 # _2 = st.checkbox('ชุมชนชานเมือง')
 # _3 = st.checkbox('ชุมชนหมู่บ้านจัดสรร')
@@ -24,6 +27,24 @@ df_3 = df[df['type'] == 'ชุมชนหมู่บ้านจัดสร�
 df_4 = df[df['type'] == 'เคหะชุมชน']
 df_5 = df[df['type'] == 'ชุมชนเมือง']
 # df_6 = df[df['type'] == 'ชุมชนอาคารสูง']
+
+map_th_risk = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
+HeatMap(heatmap_df_risk0, 
+        min_opacity=0.4,
+        blur = 18
+               ).add_to(folium.FeatureGroup(name='Heat Map').add_to(map_th_risk))
+
+for lat, lng, name in zip(heatmap_df_risk1['LAT'].astype(float), heatmap_df_risk1['LONG'].astype(float), 'เขต' + heatmap_df_risk1['District']):
+    folium.CircleMarker(
+        [lat, lng],
+        radius=10,
+        color= None,
+        fill=True,
+        popup=folium.Popup(name, max_width="100"),
+        fill_color='#000000',
+        fill_opacity= 0,
+        parse_html=False
+    ).add_to(map_th_risk)
 
 map_th0 = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Stamen Toner", zoom_start=10)
 HeatMap(heatmap_df0, 
@@ -174,10 +195,9 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
 # st.sidebar.title("49 Urban Tent \nSelect Community Map")
 st.sidebar.title("Select Community Map")
 
-
 option = st.sidebar.radio(
     "Which community would you like to show",
-    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap'))
+    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap','Risk Heatmap'))
 
 # option = st.selectbox(
 #     'Select community type',
@@ -204,6 +224,9 @@ if option == 'ชุมชนเมือง':
 if option == 'Population Heatmap':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_th0, width=700, height= 500, returned_objects=[])
+if option == 'Risk Heatmap':
+    # df = df[df['type'] == 'ชุมชนเมือง']
+    st_folium(map_th_risk, width=700, height= 500, returned_objects=[])
 
 
 
