@@ -191,13 +191,36 @@ for lat, lng, name in zip(df_5['lat'].astype(float), df_5['lng'].astype(float), 
         parse_html=False
     ).add_to(map_th5)
 # map5 = st_folium(map_th5, width=700, height= 500, returned_objects=[])
+# -----------------------------
+import geopandas as gpd
+import folium
+
+# Load the district boundaries from the GeoJSON file
+districts = gpd.read_file('district.json', encoding='utf-8')
+
+def style_function(feature):
+    return {
+        'fillColor': '#ffffff',  # Set the fill color of polygons
+        'color': '#00f2ff',      # Set the border color of polygons
+        'weight': 1,             # Set the border width in pixels
+        'fillOpacity': 0       # Set the opacity of the polygon fill
+    }
+# Create a Folium map centered on Thailand
+map_border = folium.Map(location=[13.80174488029037, 100.5863404554943], tiles="Cartodbdark_matter", zoom_start=10) #"Stamen Toner", zoom_start=8)
+
+# Add the district boundaries to the map
+folium.GeoJson(districts, style_function=style_function,
+    highlight_function=lambda x: {'weight': 3, 'color': '#3f999e','fillOpacity': 0.7 },
+    tooltip=folium.GeoJsonTooltip(fields=['dname'], labels=False, sticky=True)).add_to(map_border)
+
+# -----------------------------
 
 # st.sidebar.title("49 Urban Tent \nSelect Community Map")
 st.sidebar.title("Select Community Map")
 
 option = st.sidebar.radio(
     "Which community would you like to show",
-    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap','Risk Heatmap'))
+    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap','Risk Heatmap', 'District Border'))
 
 # option = st.selectbox(
 #     'Select community type',
@@ -227,6 +250,9 @@ if option == 'Population Heatmap':
 if option == 'Risk Heatmap':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_th_risk, width=700, height= 500, returned_objects=[])
+if option == 'District Border':
+    # df = df[df['type'] == 'ชุมชนเมือง']
+    st_folium(map_border, width=700, height= 500, returned_objects=[])
 
 
 
