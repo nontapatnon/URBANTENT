@@ -226,33 +226,37 @@ option = st.sidebar.radio(
 #     'Select community type',
 #     ('ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง'))
 
+height_ = 500
+width_ = 725
+
+
 if option == 'ทั้งหมด':
     # df = df[df['type'] == 'ชุมชนแออัด']
-    st_folium(map_th, width=700, height= 500, returned_objects=[])
+    st_folium(map_th , width = width_,height=height_,  returned_objects=[])
 if option == 'ชุมชนแออัด':
     # df = df[df['type'] == 'ชุมชนแออัด']
-    st_folium(map_th1, width=700, height= 500, returned_objects=[])
+    st_folium(map_th1,width = width_,height=height_, returned_objects=[])
 if option == 'ชุมชนชานเมือง':
     # df = df[df['type'] == 'ชุมชนชานเมือง']
-    st_folium(map_th2, width=700, height= 500, returned_objects=[])
+    st_folium(map_th2,width = width_,height=height_, returned_objects=[])
 if option == 'ชุมชนหมู่บ้านจัดสรร':
     # df = df[df['type'] == 'ชุมชนหมู่บ้านจัดสรร']
-    st_folium(map_th3, width=700, height= 500, returned_objects=[])
+    st_folium(map_th3,width = width_,height=height_, returned_objects=[])
 if option == 'เคหะชุมชน':
     # df = df[df['type'] == 'เคหะชุมชน']
-    st_folium(map_th4, width=700, height= 500, returned_objects=[])
+    st_folium(map_th4,width = width_, height=height_, returned_objects=[])
 if option == 'ชุมชนเมือง':
     # df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_th5, width=700, height= 500, returned_objects=[])
+    st_folium(map_th5,width = width_ , height=height_, returned_objects=[])
 if option == 'Population Heatmap':
     # df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_th0, width=700, height= 500, returned_objects=[])
+    st_folium(map_th0, width = width_, height=height_, returned_objects=[])
 if option == 'Risk Heatmap':
     # df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_th_risk, width=700, height= 500, returned_objects=[])
+    st_folium(map_th_risk,width = width_, height=height_, returned_objects=[])
 if option == 'District Border':
     # df = df[df['type'] == 'ชุมชนเมือง']
-    st_folium(map_border, width=700, height= 500, returned_objects=[])
+    st_folium(map_border, width = width_, height=height_, returned_objects=[])
 
 
 
