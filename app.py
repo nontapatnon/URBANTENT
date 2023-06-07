@@ -246,7 +246,7 @@ folium.GeoJson(districts, style_function=style_function,
 # -----------------------------
 
 # st.sidebar.title("49 Urban Tent \nSelect Community Map")
-st.sidebar.title("Select Community Map")
+st.sidebar.title("49 URBAN TENT")
 
 option = st.sidebar.radio(
     "Which community would you like to show",
