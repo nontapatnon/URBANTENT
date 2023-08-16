@@ -249,11 +249,14 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 
-# Sample data (replace this with your actual data)
-data = pd.DataFrame({
-    "lng": [longitude_values],
-    "lat": [latitude_values]
-})
+data = pd.read_csv("health.csv",sep=',')
+# data = data[['Restaurant','Longitude','Latitude']]
+data = data[['name','lng','lat']]
+data.columns = ['name', 'lng', 'lat']
+# data = pd.DataFrame({
+#     "lng": [longitude_values],
+#     "lat": [latitude_values]
+# })
 
 # Define a layer to display on a map
 layer = pdk.Layer(
