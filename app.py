@@ -243,6 +243,40 @@ folium.GeoJson(districts, style_function=style_function,
     highlight_function=lambda x: {'weight': 3, 'color': '#3f999e','fillOpacity': 0.7 },
     tooltip=folium.GeoJsonTooltip(fields=['dname'], labels=False, sticky=True)).add_to(map_border)
 
+
+# ====== healthcare ======
+import streamlit as st
+import pandas as pd
+import pydeck as pdk
+
+# Sample data (replace this with your actual data)
+data = pd.DataFrame({
+    "lng": [longitude_values],
+    "lat": [latitude_values]
+})
+
+# Define a layer to display on a map
+layer = pdk.Layer(
+    "HexagonLayer",
+    data,
+    get_position=["lng", "lat"],
+    auto_highlight=True,
+    elevation_scale=50,
+    pickable=True,
+    elevation_range=[0, 1000],
+    extruded=True,
+    coverage=0.8,
+)
+
+# Set the viewport location
+view_state = pdk.ViewState(
+    longitude=data['lng'].mean(), latitude=data['lat'].mean(), zoom=8, min_zoom=3, max_zoom=15, pitch=30, bearing=10,
+)
+
+
+
+
+
 # -----------------------------
 
 # st.sidebar.title("49 Urban Tent \nSelect Community Map")
@@ -250,7 +284,7 @@ st.sidebar.title("49 URBAN TENT")
 
 option = st.sidebar.radio(
     "Which community would you like to show",
-    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap','Risk Heatmap','Unoccupied Heatmap', 'District Border'))
+    ('ทั้งหมด','ชุมชนแออัด', 'ชุมชนชานเมือง', 'ชุมชนหมู่บ้านจัดสรร','เคหะชุมชน','ชุมชนเมือง','Population Heatmap','Risk Heatmap','Unoccupied Heatmap', 'District Border', 'Healthcare'))
 
 # option = st.selectbox(
 #     'Select community type',
@@ -290,6 +324,10 @@ if option == 'Unoccupied Heatmap':
 if option == 'District Border':
     # df = df[df['type'] == 'ชุมชนเมือง']
     st_folium(map_border, width = width_, height=height_, returned_objects=[])
+if option == 'Healthcare':
+    # Render using Streamlit
+    st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=view_state))
+
 
 
 # df_1 = df[df['type'] == 'ชุมชนแออัด']
