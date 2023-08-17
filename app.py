@@ -273,7 +273,7 @@ layer = pdk.Layer(
 
 # Set the viewport location
 view_state = pdk.ViewState(
-    longitude=data['lng'].mean(), latitude=data['lat'].mean(), zoom=8, min_zoom=3, max_zoom=15, pitch=30, bearing=10,
+    longitude=data['lng'].mean(), latitude=data['lat'].mean(), zoom=8, min_zoom=3, max_zoom=15, pitch=30, bearing=0,
 )
 
 
